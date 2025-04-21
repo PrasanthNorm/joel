@@ -9,29 +9,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          blue: '#0A2463',      // Deep ocean blue - trust and stability
-          coral: '#FF6B6B',     // Coral reef - energy and engagement
-          green: '#48BF84',     // Seafoam green - growth and learning
-          gold: '#FFD93D'       // Sunshine gold - positivity and creativity
+        primary: '#BFA2DB',      // Lavender - Buttons, Icons, Highlights
+        secondary: '#A2D2FF',    // Soft Blue - Background accents, cards
+        accent: {
+          yellow: '#FFE066',     // Warm Yellow - Highlights, success alerts, premium
+          green: '#C1F0DC'       // Mint Green - Text bubbles, suggestions
         },
-        secondary: {
-          navy: '#1B3B6F',      // Dark navy - professionalism
-          teal: '#06BCC1',      // Vibrant teal - innovation
-          sage: '#7FB069',      // Sage green - balance
-          amber: '#FFA400'      // Warm amber - enthusiasm
-        },
+        character: '#FDDDE6',    // Baby Pink - Friendly character tones
         neutral: {
-          100: '#F5F7FA',       // Lightest gray
-          200: '#E4E7EB',       // Light gray
-          300: '#CBD2D9',       // Medium light gray
-          400: '#9AA5B1',       // Medium gray
-          500: '#7B8794',       // True gray
-          600: '#616E7C',       // Medium dark gray
-          700: '#52606D',       // Dark gray
-          800: '#3E4C59',       // Very dark gray
-          900: '#1F2933'        // Darkest gray
-        }
+          light: '#FAFAFA',      // Snow White - Main background
+          dark: '#3A3A3A'        // Soft Charcoal - Text, menu titles
+        },
+        success: '#A9E44D',      // Lime Green - Correct answers
+        error: '#FF6B6B',        // Coral Red - Mistakes, alerts
+        premium: '#FFD700'       // Royal Gold - Crown, Premium Tags
       },
       fontFamily: {
         nunito: ['Nunito', 'sans-serif'],

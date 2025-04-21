@@ -64,8 +64,8 @@ export default function Home() {
               <div className="flex items-start space-x-4">
                 <div className="text-4xl">{feature.icon}</div>
                 <div>
-                  <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                  <p className="text-gray-600">{feature.description}</p>
+                  <h3 className="text-xl font-bold mb-2 text-neutral-dark">{feature.title}</h3>
+                  <p className="text-neutral-dark">{feature.description}</p>
                 </div>
               </div>
             </button>
