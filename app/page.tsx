@@ -1,103 +1,92 @@
 import Image from "next/image";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+'use client';
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+import { useState } from 'react';
+import MainLayout from './components/layout/MainLayout';
+
+interface FeatureCard {
+  title: string;
+  icon: string;
+  description: string;
+  color: string;
+}
+
+export default function Home() {
+  const [remainingTime, setRemainingTime] = useState('60:00');
+
+  const features: FeatureCard[] = [
+    {
+      title: 'AI Voice Friend',
+      icon: '🎤',
+      description: 'Talk with Joel and improve your pronunciation',
+      color: 'bg-primary-blue/20'
+    },
+    {
+      title: 'AI Chat - Sentence Correction',
+      icon: '✏️',
+      description: 'Type sentences and get instant corrections',
+      color: 'bg-primary-mint/20'
+    },
+    {
+      title: 'English to Telugu Translator',
+      icon: '🔤',
+      description: 'Translate between English and Telugu easily',
+      color: 'bg-primary-lavender/20'
+    },
+    {
+      title: 'AI Group Discussion',
+      icon: '👥',
+      description: 'Practice English in an AI-moderated group chat',
+      color: 'bg-primary-yellow/20'
+    }
+  ];
+
+  return (
+    <MainLayout>
+      <div className="max-w-7xl mx-auto px-4 py-8 space-y-8">
+        {/* Timer Display */}
+        <div className="flex justify-center">
+          <div className="bg-white rounded-full px-6 py-2 shadow-soft">
+            <p className="text-sm font-medium">
+              Free Time Remaining: <span className="text-primary-blue font-bold">{remainingTime}</span>
+            </p>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        {/* Feature Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {features.map((feature, index) => (
+            <button
+              key={index}
+              className={`${feature.color} p-6 rounded-2xl shadow-card hover:shadow-lg transition-shadow
+                transform hover:scale-[1.02] transition-transform duration-200 text-left`}
+            >
+              <div className="flex items-start space-x-4">
+                <div className="text-4xl">{feature.icon}</div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
+                </div>
+              </div>
+            </button>
+          ))}
+        </div>
+
+        {/* Wake Word Indicator */}
+        <div className="fixed bottom-8 right-8">
+          <button className="bg-primary-blue text-white rounded-full p-4 shadow-lg
+            hover:bg-primary-blue/90 transition-colors">
+            <div className="relative">
+              <span className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse"></span>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                  d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+              </svg>
+            </div>
+          </button>
+        </div>
+      </div>
+    </MainLayout>
   );
 }
